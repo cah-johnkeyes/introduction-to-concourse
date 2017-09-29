@@ -21,3 +21,20 @@ jobs:
           run:
             path: the-app/basic-java-app/gradlew
             args: ["-p", "the-app/basic-java-app", "test"]
+
+  - name: build-the-app
+    plan:
+      - get: the-app
+        passed: [test-the-app]
+        trigger: true
+      - task: buid
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: java}
+          inputs:
+            - name: the-app
+          run:
+            path: the-app/basic-java-app/gradlew
+            args: ["-p", "the-app/basic-java-app", "assemble"]
