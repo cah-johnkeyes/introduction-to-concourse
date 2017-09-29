@@ -13,6 +13,7 @@ public class GreetingMachine {
     }
 
     public String greet() {
+        
         return salutation;
     }
 }
