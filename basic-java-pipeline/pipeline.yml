@@ -1,0 +1,23 @@
+resources:
+  - name: the-app
+    type: git
+    source:
+      uri: https://github.com/cah-johnkeyes/introduction-to-concourse.git
+      branch: master
+
+jobs:
+  - name: test-the-app
+    plan:
+      - get: the-app
+        trigger: true
+      - task: test
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source: {repository: java}
+          inputs:
+            - name: the-app
+          run:
+            path: the-app/basic-java-app/gradlew
+            args: ["-p", "the-app/basic-java-app", "test"]
