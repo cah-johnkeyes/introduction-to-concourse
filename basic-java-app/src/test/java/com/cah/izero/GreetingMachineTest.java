@@ -23,5 +23,4 @@ class GreetingMachineTest {
     public void itGreetsNoName() {
         assertThat(machine.greet("Dude")).isEqualTo(salutation + ", Dude");
     }
-
 }
