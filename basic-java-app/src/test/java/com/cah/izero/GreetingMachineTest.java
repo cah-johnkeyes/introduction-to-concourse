@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-class GreetingMachineTest {
+public class GreetingMachineTest {
 
     private String salutation = "Sup";
     private GreetingMachine machine;
